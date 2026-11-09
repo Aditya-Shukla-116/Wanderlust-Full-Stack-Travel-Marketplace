@@ -1,12 +1,12 @@
 const Review = require("../models/review.js");
-const Listing = require("../models/listing.js"); //because for reviews we need listing
+const Listing = require("../models/listing.js"); // For reviews we need listing
 
 module.exports.createReview = async (req,res)=>{
    let {id} = req.params;
    const list = await Listing.findById(id);
   //  console.log(req.body.review);
    let newReview = new Review(req.body.review);
-  // IMPORTANT: You must assign the author before saving!
+  //  assign the author before saving!
    newReview.author = req.user._id; 
 //    console.log(newReview);
 

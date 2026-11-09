@@ -48,10 +48,21 @@ module.exports.login = async (req, res) => {
     req.flash("success", "Welcome back to Wanderlust!");
     let redirectUrl = res.locals.redirectUrl ;
     
-    // let redirectUrl = res.locals.redirectUrl || "/listings" ;
-    //maine saveRedirectUrl ke middleware me hi insert krdiya as else condition
-    //iska karan simple hai agar hum direct login  dabake page se login krne ka try karenge to isloggedin to trigger hi nhi hoga kyuki vo create, update,edit in sab route pe hai as midleware so yha pe agar hum res.redirect(req.locals.redirectUrl) kre to redirectUrl empty hai and it will show that page is not found so thats why we arechecking if redirectUrl is there or else it will redirect to /listings. 
-    // Redirect the authenticated user to the page.
+// let redirectUrl = res.locals.redirectUrl || "/listings";
+// I added this directly as an else condition inside the saveRedirectUrl middleware.
+//
+// The reason is simple: if we click Login directly from a page and try to log in,
+// the isLoggedIn middleware will not be triggered because it is only applied
+// to protected routes like create, update, edit, etc.
+//
+// So, if we use res.redirect(req.locals.redirectUrl) here,
+// redirectUrl will be empty, and it will show "Page Not Found".
+//
+// That's why we are checking whether redirectUrl exists or not.
+// If redirectUrl exists, we redirect the user to that page.
+// Otherwise, we redirect the user to /listings.
+//
+// Redirect the authenticated user to the page.
     res.redirect(redirectUrl);
   };
 

@@ -35,7 +35,7 @@
     name="listing[category]" 
     required
   >
-    <!-- Use EJS inline ternary operators to check which category is saved and apply the 'selected' attribute -->
+    <!-- EJS inline ternary operators to check which category is saved and apply the 'selected' attribute -->
     <option value="none" <%= list.category === 'none' ? 'selected' : '' %>>None (General Listing)</option>
     <option value="omg" <%= list.category === 'omg' ? 'selected' : '' %>>OMG!</option>
     <option value="lakefront" <%= list.category === 'lakefront' ? 'selected' : '' %>>Lakefront</option>

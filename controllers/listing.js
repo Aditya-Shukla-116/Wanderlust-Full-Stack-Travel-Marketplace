@@ -84,9 +84,6 @@ module.exports.createListing = async (req, res, next) => {
   module.exports.renderEditForm = async (req, res) => {
       let { id } = req.params;
       let list = await Listing.findById(id);
-      //  console.log("EDIT ROUTE REACHED");
-      //  console.log(id);
-  
       // Check whether the requested listing exists in the database.
       // If it doesn't exist, store an error message using flash
       // and redirect the user to the All Listings page.

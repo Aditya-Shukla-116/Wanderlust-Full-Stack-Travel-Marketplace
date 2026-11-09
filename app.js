@@ -1,20 +1,5 @@
 
-const dns = require("dns");
-
-dns.setServers([
-    "8.8.8.8",
-    "8.8.4.4"
-]);
-
 require("dotenv").config();
-
-
-// if(process.env.NODE_ENV != "production"){
-//  require('dotenv').config()
-//  // or import 'dotenv/config' // for esm
-// }
-
-
 
 const express = require("express");
 const app = express();
@@ -22,8 +7,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-//imp point - body under boilerplate.ejs takes body from index.ejs, edit.ejs, new.ejs, show.ejs
-const port = 8080;
+const port = process.env.PORT || 8080;
 const ExpressError = require("./utils/ExpressError.js");
 
 const session = require("express-session");
@@ -34,7 +18,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
 const listingRouter = require("./routes/listing.js");  //routes
-const reviewRouter = require("./routes/review.js");  //routesnpm install connect-mongo --legacy-peer-deps
+const reviewRouter = require("./routes/review.js");  //routes npm install connect-mongo --legacy-peer-deps
 const userRouter = require("./routes/user.js");  //routes
 
 
@@ -45,7 +29,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));//path.join() itself puts the required separator between them.
-//So the / is not necessary because path.join() handles the separator for you.
+//So the / is not necessary because path.join() handles the separator.
 
 const dbUrl = process.env.ATLASDB_URL
 

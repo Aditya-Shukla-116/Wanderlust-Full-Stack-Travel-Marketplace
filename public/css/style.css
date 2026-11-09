@@ -1,51 +1,8 @@
-/* Bootstrap & Body Margin — Quick Note
-- Without Bootstrap: browser gives body a default margin of about 8px.
-- With Bootstrap: Bootstrap Reboot sets:body {
-      margin: 0;
-  }
-- So your old page may suddenly touch the screen edges.
-Remember
-No Bootstrap → default body margin ≈ 8px
-Bootstrap    → body margin = 0
-
-To control it yourself:
-body {
-    margin: 0 30px;
-}
-
-Always remember: if Bootstrap removes your expected outer spacing, check body { margin: 0; } first. 
-CSS Link Order — Quick Note
-<link rel="stylesheet" href="bootstrap.css">
-<link rel="stylesheet" href="style.css">
-
-Bootstrap first → Your CSS second
-Bootstrap styles
-      ↓
-Your CSS comes later
-      ↓
-Your CSS can override Bootstrap
-
-But remember: later CSS only overrides a property that you actually define.
-Example:
-/* Bootstrap */
-/* body {
-    margin: 0;
-}
-
-/* Your CSS comes later 
-body {
-    font-family: "Plus Jakarta Sans";
-}
-
-margin stays 0 because your CSS didn't set margin.
-So:
-CSS file below Bootstrap does not automatically restore old styles. It only overrides the properties you write.
-*/
 
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important ;
   display: flex;
-  margin: 0px; /* browser default  margin overrided by bootstrap margin which is 0 so we have to apply margin in our css but footer also gets affected so that's why i put margin to main container so that margin will be applied to main content only */
+  margin: 0px;
   flex-direction: column;
   min-height: 100vh;
 }
@@ -201,20 +158,7 @@ body {
 /* =================================
    CREATE LISTING PAGE
    ================================= */
-/* .new-listing-page h1 {
-  font-weight: bolder;
-}
-.new-listing-page {
-  width: 100%;
-  max-width: 650px;
-  margin: 50px auto;  if you don't give max-width so it takes 100% so how auto calculates it don't work 
-  padding: 0 20px;
-}
 
-.new-listing-page h3 {
-  font-size: 30px;
-  margin-bottom: 30px;
-} */
 
 .listing-form {
   width: 100%;
@@ -249,11 +193,7 @@ body {
   resize: none; /*user can easily drag textarea and can change the size if you give vertical and horizontal */
 }
 
-/* .form-group input:focus,        /*focus,active,hover,visited 
-.form-group textarea:focus{
-   border-color: rgb(63, 213, 163);
-   box-shadow: 0 0 10px rgba(63, 213, 163, 0.5);
-} */
+
 /* Create page button styling */
 .listing-form button {
   border: none;
@@ -272,129 +212,10 @@ body {
   opacity: 0.9;
 }
 
-/* /* =================================
-   RESPONSIVE
-   ================================= */
-/* =========================
-   TABLET
-   768px - 1024px
-   ========================= 
-
-@media (max-width: 1024px) {
-
-    .new-listing-page {
-        max-width: 600px;
-        margin: 40px auto;
-    }
-
-}
-
-
-/* =========================
-   MOBILE
-   Below 768px
-   ========================= 
-
-@media (max-width: 768px) {
-
-    .new-listing-page {
-        width:100%;
-        max-width: 450px;
-        margin: 30px auto;
-        padding: 0 15px;
-    }
-
-    .new-listing-page h3 {
-        font-size: 25px;
-        margin-bottom: 25px;
-    }
-
-    .form-group {
-        margin-bottom: 16px;
-    }
-
-    .form-group label {
-        font-size: 15px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        font-size: 15px;
-        padding: 11px 12px;
-    }
-
-    .form-group textarea {
-        min-height: 120px;
-    }
-
-    .listing-form button {
-        padding: 12px;
-    }
-
-} */
-
-/* Base = Extra Small (< 576px) */
-/* .new-listing-page {
-    width: 100%;
-    max-width: 450px;
-    margin: 30px auto;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-
-/* SM → 576px and above 
-@media (min-width: 576px) {
-
-    .new-listing-page {
-        max-width: 500px;
-    }
-
-}
-
-
-/* MD → 768px and above 
-@media (min-width: 768px) {
-
-    .new-listing-page {
-        max-width: 550px;
-    }
-
-}
-
-
-/* LG → 992px and above 
-@media (min-width: 992px) {
-
-    .new-listing-page {
-        max-width: 650px;
-    }
-
-}
-
-
-/* XL → 1200px and above 
-@media (min-width: 1200px) {
-
-    .new-listing-page {
-        max-width: 650px;
-    }
-
-}
-
-
-/* XXL → 1400px and above 
-@media (min-width: 1400px) {
-
-    .new-listing-page {
-        max-width: 650px;
-    }
-
-} */
 
 /* Edit page css */
 .edit-btn {
-  background-color: #fe424d; /* why applied without !important because css link is below the  bootstrap link */
+  background-color: #fe424d; 
   border: none;
 }
 
@@ -404,10 +225,6 @@ body {
 }
 
 /* Show page css */
-/* .show-card {
-  margin-top: 30px;
-  margin-left: 250px;
-} */
 
 .show-img-card img {
   width: 85%;
@@ -430,8 +247,6 @@ body {
   margin: 20px 0;
   display: flex;
   gap: 10px;
-  /*background-color: lightblue;
-    border: 2px solid red; */
 }
 
 .error {
@@ -468,7 +283,6 @@ body {
 /* Home icons(Shortcuts) */
 
 /* Airbnb Category Bar Theme Colors */
-/* Airbnb Category Bar Theme Colors */
 :root {
   --ab-gray: #717171;
   --ab-black: #222222;
@@ -495,7 +309,7 @@ body {
   scrollbar-width: none; /* Hides scrollbar in Firefox */
   padding-left: 4px;
   padding-top: 15px;
-  flex-wrap: wrap; /* FIXED: Forces items to stay in one line so they can hide/scroll sideways */
+  flex-wrap: wrap; 
 }
 
 /* Hides scrollbar in Chrome/Safari */

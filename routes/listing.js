@@ -44,7 +44,7 @@ router
 
 
 
-// Remember the session connection:
+// The session connection:
 // 1. User logs in → Passport authenticates the credentials.
 // 2. serializeUser() → Stores the user's ID in the session.
 // 3. Browser sends the session cookie with subsequent requests.
