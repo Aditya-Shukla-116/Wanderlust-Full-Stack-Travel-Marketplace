@@ -145,6 +145,11 @@ app.use((req,res,next)=>{
 // without passing it manually through every res.render() call.
 
 
+// Root Route: Redirects traffic automatically to /listings
+app.get('/', (req, res) => {
+    res.redirect('/listings');
+});
+
 
 app.use("/listings" , listingRouter);
 app.use("/listings/:id/reviews" , reviewRouter);
