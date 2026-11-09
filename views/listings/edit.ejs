@@ -1,0 +1,91 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+ <div class="row mt-5">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-8 col-xl-7 mx-auto"> <!--offset-2 → creates the left space col-8    → gives the element its width   total 12 col grid is there so  it divides equally | 2 columns empty | 8 columns FORM | 2 columns empty | -->
+
+    <h1>Edit List</h1>
+    <br>
+    <form method="post" action="/listings/<%= list._id %>?_method=put" enctype="multipart/form-data">
+    <div class="mb-3">
+    <label class="form-label" for="title">Title: </label>
+    <input class="form-control" id="title" type="text" name="listing[title]" value="<%= list.title %>" placeholder="Enter title">
+    </div>
+   
+    <div class="mb-3">
+    <label class="form-label" for="description">Description: </label>
+    <textarea class="form-control" name="listing[description]" id="description"><%= list.description %></textarea>
+    </div>
+
+
+    <div class="mb-3">
+      <h4>Original Image</h4>
+      <img src="<%= originalImageUrl %>" alt="image">
+    </div>
+
+      <div class="mb-3">
+      <label class="form-label" for="image">Upload New Image: </label>
+      <input class="form-control" name="listing[image]" id="image" type="file" />
+      </div>
+
+   <div class="mb-3">
+  <label class="form-label" for="category">Category: </label>
+  <select 
+    class="form-control form-select" 
+    id="category" 
+    name="listing[category]" 
+    required
+  >
+    <!-- Use EJS inline ternary operators to check which category is saved and apply the 'selected' attribute -->
+    <option value="none" <%= list.category === 'none' ? 'selected' : '' %>>None (General Listing)</option>
+    <option value="omg" <%= list.category === 'omg' ? 'selected' : '' %>>OMG!</option>
+    <option value="lakefront" <%= list.category === 'lakefront' ? 'selected' : '' %>>Lakefront</option>
+    <option value="tinyhomes" <%= list.category === 'tinyhomes' ? 'selected' : '' %>>Tiny homes</option>
+    <option value="trending" <%= list.category === 'trending' ? 'selected' : '' %>>Trending</option>
+    <option value="treehouses" <%= list.category === 'treehouses' ? 'selected' : '' %>>Treehouses</option>
+    <option value="countryside" <%= list.category === 'countryside' ? 'selected' : '' %>>Countryside</option>
+    <option value="historical" <%= list.category === 'historical' ? 'selected' : '' %>>Historical homes</option>
+    <option value="beachfront" <%= list.category === 'beachfront' ? 'selected' : '' %>>Beachfront</option>
+    <option value="tropical" <%= list.category === 'tropical' ? 'selected' : '' %>>Tropical</option>
+  </select>
+</div>
+
+
+
+
+
+
+      
+      <div class="row">
+      <div class="mb-3 col-md-4">
+      <label class="form-label" for="price">Price: </label>
+      <input class="form-control" name="listing[price]" id="price" value="<%= list.price %>" type="number" />
+      </div>
+      
+      <div class="mb-3 col-md-8">
+       <label class="form-label" for="country">Country: </label>
+      <input class="form-control"
+        name="listing[country]"
+        id="country"
+        value="<%= list.country %>"
+        type="text"
+      />
+      </div>
+      </div>
+      
+      <div class="mb-3">
+         <label class="form-label" for="location">Location: </label>
+      <input
+        class="form-control"
+        name="listing[location]"
+        id="location"
+        value="<%= list.location %>"
+        type="text"
+      />
+      </div>
+
+      <button class="btn btn-dark edit-btn mt-3 mb-3">Edit</button>
+      </form>
+
+       </div>
+  </div>
+</body>

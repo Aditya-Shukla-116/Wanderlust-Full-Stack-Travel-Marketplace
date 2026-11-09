@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top py-2">
+  <div class="container-fluid">
+   
+    <!-- 1. Left Section: Logo Brand Pin -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass fs-3" style="color: #ff385c;"></i>
+    </a>
+
+    <!-- 2. Mobile Toggler Toggle Switch Button -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- 3. Responsive Drawer: Stays inline on desktop, stacks on mobile -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      
+      <!-- Left Link Elements Zone -->
+      <div class="navbar-nav mb-2 mb-md-0">
+        <a class="nav-link fw-semibold text-dark" href="/listings">Explore</a>
+      </div>
+
+      <!-- Centered Pill Search Form Layout Section -->
+      <div class="mx-auto my-3 my-md-0 d-flex justify-content-center align-items-center search-wrapper-box" style="max-width: 360px; width: 100%;">
+        <form class="d-flex w-100 position-relative align-items-center" role="search" action="/listings" method="GET">
+          <input 
+            class="form-control search-inp shadow-sm rounded-pill py-2 pe-5 ps-3 border" 
+            type="search" 
+            name="search" 
+            placeholder="Search destinations..." 
+            value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+            aria-label="Search"
+            style="font-size: 14px; height: 40px; width: 100%;"
+          />
+          <button class="btn search-btn rounded-pill position-absolute end-0 me-1 d-flex align-items-center justify-content-center" type="submit" style="height: 32px; width: 32px; background-color: #ff385c; border: none; padding: 0;">
+            <i class="fa-solid fa-magnifying-glass text-white fs-6"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Link Authentication Control Links Zone -->
+      <div class="navbar-nav ms-auto align-items-center gap-2 mb-2 mb-md-0">
+        <a class="nav-link fw-semibold text-dark" href="/listings/new" style="font-size: 14px;">Airbnb your home</a>
+        
+        <% if (!currUser) { %>
+          <a class="btn btn-outline-dark rounded-pill px-3 py-1 btn-sm fw-semibold w-100 w-md-auto my-1 my-md-0" href="/signup">Signup</a>
+          <a class="btn btn-dark rounded-pill px-3 py-1 btn-sm fw-semibold w-100 w-md-auto my-1 my-md-0" href="/login">Login</a>
+        <% } %>
+
+        <% if (currUser) { %>
+          <a class="btn btn-outline-danger rounded-pill px-3 py-1 btn-sm fw-semibold w-100 w-md-auto" href="/logout">Logout</a>
+        <% } %>
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+
+<!-- <nav class="nav-b">
+      <div class="navbar-navigation">
+        <a class="_navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
+        <a class="_nav-link"  href="/">Home</a>
+        <a class="_nav-link" href="/listings">All listings</a>
+        <a class="_nav-link" href="/listings/new">Add new list</a>
+      </div>
+</nav> -->

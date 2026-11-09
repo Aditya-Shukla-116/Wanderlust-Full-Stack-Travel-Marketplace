@@ -1,0 +1,147 @@
+<% layout("/layouts/boilerplate") -%>
+<div class="row mt-5">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-8 col-xl-7 mx-auto">        <!--   new-listing-page -->
+  <h1>Create a New Listing</h1>
+  <form method="POST" action="/listings" class="listing-form needs-validation" novalidate enctype="multipart/form-data">
+
+  <div class="form-group mb-3">
+    <label for="title">Title:</label>
+    <input
+      class="form-control"
+      id="title"
+      name="listing[title]"
+      placeholder="Enter title"
+      type="text"
+      required
+    />
+      <div class="invalid-feedback">
+        Please enter a listing title.
+      </div>
+    </div>
+  
+
+  <div class="form-group mb-3">
+    <label for="description">Description:</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="listing[description]"
+      placeholder="Enter description"
+      required
+    ></textarea>
+     <div class="invalid-feedback">
+        Please enter a description.
+    </div>
+  </div>
+
+  <!-- <div class="form-group mb-3">
+    <label for="image">Image URL:</label>
+    <input
+     class="form-control"
+      id="image"
+      name="listing[image]"
+      placeholder="Enter image URL/Link"
+      type="url"
+    />
+    <div class="invalid-feedback">
+        Please enter a valid image URL.
+      </div>
+  </div> -->
+
+
+  
+  <div class="form-group mb-3">
+    <label for="image">Upload Image:</label>
+    <input
+     class="form-control"
+      id="image"
+      name="listing[image]"
+      type="file"
+      required
+    />
+  </div>
+
+
+  <div class="form-group mb-3">
+  <label for="category">Category:</label>
+  <select 
+    class="form-control form-select" 
+    id="category" 
+    name="listing[category]" 
+    required
+  >
+    <option value="" disabled selected>Select a category...</option>
+    <option value="none">None (General Listing)</option> 
+    
+    <option value="omg">OMG!</option>
+    <option value="lakefront">Lakefront</option>
+    <option value="tinyhomes">Tiny homes</option>
+    <option value="trending">Trending</option>
+    <option value="treehouses">Treehouses</option>
+    <option value="countryside">Countryside</option>
+    <option value="historical">Historical homes</option>
+    <option value="beachfront">Beachfront</option>
+    <option value="tropical">Tropical</option>
+  </select>
+</div>
+
+
+
+   <div class="row">
+     <div class="form-group col-md-4 mb-3">
+    <label for="price">Price:</label>
+    <input
+      class="form-control"
+      id="price"
+      name="listing[price]"
+      placeholder="Enter price"
+      type="number"
+      min="1"
+      required
+    />
+    
+    <div class="invalid-feedback">
+        Please enter a price greater than zero.
+    </div>
+  </div>
+
+  <div class="form-group col-md-8 mb-3">
+    <label for="country">Country:</label>
+    <input
+      class="form-control"
+      id="country"
+      name="listing[country]"
+      placeholder="Enter country"
+      type="text"
+      required
+    />
+    <div class="invalid-feedback">
+        Please enter a country.
+    </div>
+  </div>
+   </div>
+ 
+
+  <div class="form-group mb-3">
+    <label for="location">Location:</label>
+    <input
+      class="form-control"
+      id="location"
+      name="listing[location]"
+      placeholder="Enter location"
+      type="text"
+      required
+    />
+    <div class="invalid-feedback">
+        Please enter a location.
+    </div>
+  </div>
+<button type="submit" class="btn btn-dark mt-3 mb-3">
+      Add Listing
+    </button>
+
+</form>
+</div> 
+</div>
+
+

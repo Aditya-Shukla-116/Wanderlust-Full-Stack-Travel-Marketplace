@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= err.statusCode || 500 %> - Something went wrong</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            background: white;
+            max-width: 500px;
+            width: 100%;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-code {
+            font-size: 64px;
+            color: #fe424d;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        a {
+            display: inline-block;
+            background: #fe424d;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 25px;
+        }
+
+        a:hover {
+            background: #e0313c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container">
+        <h1 class="error-code">
+            <%= err.statusCode || 500 %>
+        </h1>
+
+       <h2><%- err.message || "Something went wrong!" %></h2>
+
+        <p>
+            Sorry, we couldn't complete your request.
+            Please try again or return to the home page.
+        </p>
+
+        <a href="http://localhost:8080/listings">Go to Home</a>
+    </div>
+</body>
+</html>

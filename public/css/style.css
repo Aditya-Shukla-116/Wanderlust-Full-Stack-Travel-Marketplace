@@ -1,0 +1,628 @@
+/* Bootstrap & Body Margin — Quick Note
+- Without Bootstrap: browser gives body a default margin of about 8px.
+- With Bootstrap: Bootstrap Reboot sets:body {
+      margin: 0;
+  }
+- So your old page may suddenly touch the screen edges.
+Remember
+No Bootstrap → default body margin ≈ 8px
+Bootstrap    → body margin = 0
+
+To control it yourself:
+body {
+    margin: 0 30px;
+}
+
+Always remember: if Bootstrap removes your expected outer spacing, check body { margin: 0; } first. 
+CSS Link Order — Quick Note
+<link rel="stylesheet" href="bootstrap.css">
+<link rel="stylesheet" href="style.css">
+
+Bootstrap first → Your CSS second
+Bootstrap styles
+      ↓
+Your CSS comes later
+      ↓
+Your CSS can override Bootstrap
+
+But remember: later CSS only overrides a property that you actually define.
+Example:
+/* Bootstrap */
+/* body {
+    margin: 0;
+}
+
+/* Your CSS comes later 
+body {
+    font-family: "Plus Jakarta Sans";
+}
+
+margin stays 0 because your CSS didn't set margin.
+So:
+CSS file below Bootstrap does not automatically restore old styles. It only overrides the properties you write.
+*/
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important ;
+  display: flex;
+  margin: 0px; /* browser default  margin overrided by bootstrap margin which is 0 so we have to apply margin in our css but footer also gets affected so that's why i put margin to main container so that margin will be applied to main content only */
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* navbar css */
+
+.navbar {
+  height: 5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+.nav-link {
+  color: #000000 !important;
+}
+
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+/* .nav-b {
+    position: fixed;
+    height: 50px;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    border-bottom: 1.2px solid #ddd;
+    z-index: 1000;  /*  So why do developers use 1000?Usually just to make the intended layer clearly higher than other layers that might be added later. 
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-navigation{
+    display:flex;
+    font-weight:100;
+    font-family: Arial, Helvetica, sans-serif;
+    gap:20px;
+    margin-left:10px;
+    align-items:center;
+}
+
+
+.navbar-navigation a{
+    text-decoration:none;
+} */
+
+/* footer css */
+
+.f-info {
+  /* main container info */
+  /* text-align:center; */
+  height: 10rem;
+  background-color: #ebebeb;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  /*  three diff containers for socials and links and Wanderlust div*/
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-socials i {
+  font-size: 1.2rem;
+  margin-right: 1.5rem;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+  margin-right: 1.5rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+/* card-css */
+
+/*.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;}   */
+
+.main-container {
+  flex: 1;
+  margin: 0px 25px;
+}
+
+.listing-link {
+  text-decoration: none;
+  color: inherit; /* inherit means: "Use the value that my parent element has." byDefault anchor tag print color blue that's why we used color - inherit*/
+}
+
+.listing-card {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black;
+    border-radius: 10px; */
+  overflow: hidden;
+}
+
+.description {
+  padding: 0px;
+}
+
+.image-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.listing-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+/* Add new listing page css */
+/* Create route css */
+
+/* =================================
+   CREATE LISTING PAGE
+   ================================= */
+/* .new-listing-page h1 {
+  font-weight: bolder;
+}
+.new-listing-page {
+  width: 100%;
+  max-width: 650px;
+  margin: 50px auto;  if you don't give max-width so it takes 100% so how auto calculates it don't work 
+  padding: 0 20px;
+}
+
+.new-listing-page h3 {
+  font-size: 30px;
+  margin-bottom: 30px;
+} */
+
+.listing-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none; /* no border line will be shown on input box after clicking on label  */
+  box-sizing: border-box; /*  padding/border INSIDE the given width  */
+}
+
+.form-group textarea {
+  min-height: 130px;
+  resize: none; /*user can easily drag textarea and can change the size if you give vertical and horizontal */
+}
+
+/* .form-group input:focus,        /*focus,active,hover,visited 
+.form-group textarea:focus{
+   border-color: rgb(63, 213, 163);
+   box-shadow: 0 0 10px rgba(63, 213, 163, 0.5);
+} */
+/* Create page button styling */
+.listing-form button {
+  border: none;
+  border-radius: 8px;
+
+  background: #ff385c;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.listing-form button:hover {
+  opacity: 0.9;
+}
+
+/* /* =================================
+   RESPONSIVE
+   ================================= */
+/* =========================
+   TABLET
+   768px - 1024px
+   ========================= 
+
+@media (max-width: 1024px) {
+
+    .new-listing-page {
+        max-width: 600px;
+        margin: 40px auto;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+   Below 768px
+   ========================= 
+
+@media (max-width: 768px) {
+
+    .new-listing-page {
+        width:100%;
+        max-width: 450px;
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .new-listing-page h3 {
+        font-size: 25px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group label {
+        font-size: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 15px;
+        padding: 11px 12px;
+    }
+
+    .form-group textarea {
+        min-height: 120px;
+    }
+
+    .listing-form button {
+        padding: 12px;
+    }
+
+} */
+
+/* Base = Extra Small (< 576px) */
+/* .new-listing-page {
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+
+/* SM → 576px and above 
+@media (min-width: 576px) {
+
+    .new-listing-page {
+        max-width: 500px;
+    }
+
+}
+
+
+/* MD → 768px and above 
+@media (min-width: 768px) {
+
+    .new-listing-page {
+        max-width: 550px;
+    }
+
+}
+
+
+/* LG → 992px and above 
+@media (min-width: 992px) {
+
+    .new-listing-page {
+        max-width: 650px;
+    }
+
+}
+
+
+/* XL → 1200px and above 
+@media (min-width: 1200px) {
+
+    .new-listing-page {
+        max-width: 650px;
+    }
+
+}
+
+
+/* XXL → 1400px and above 
+@media (min-width: 1400px) {
+
+    .new-listing-page {
+        max-width: 650px;
+    }
+
+} */
+
+/* Edit page css */
+.edit-btn {
+  background-color: #fe424d; /* why applied without !important because css link is below the  bootstrap link */
+  border: none;
+}
+
+.show-card h1 {
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+/* Show page css */
+/* .show-card {
+  margin-top: 30px;
+  margin-left: 250px;
+} */
+
+.show-img-card img {
+  width: 85%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgb(43, 40, 40);
+  transition: box-shadow 1s ease;
+}
+
+.show-img-card img:hover {
+  box-shadow: 10px 10px 10px rgb(43, 40, 40);
+}
+
+.show-card-description {
+  margin-top: 20px;
+}
+.show-actions {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  /*background-color: lightblue;
+    border: 2px solid red; */
+}
+
+.error {
+  display: block;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* star inside review css */
+.starability-result {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+
+/* rating css */
+.rating-slider {
+  width: 500px;
+}
+
+/* Remove the green tick from valid inputs */
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  background-image: none !important;
+}
+
+#map {
+  width: 80%;
+  aspect-ratio: 2/1;
+}
+
+/* Home icons(Shortcuts) */
+
+/* Airbnb Category Bar Theme Colors */
+/* Airbnb Category Bar Theme Colors */
+:root {
+  --ab-gray: #717171;
+  --ab-black: #222222;
+  --ab-border: #dddddd;
+}
+
+/* Base Wrapper for the Nav */
+.category-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 12px 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Horizontal Scroll Container */
+.category-list {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-behavior: smooth; /* Makes the button clicks animate smoothly */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  padding-left: 4px;
+  padding-top: 15px;
+  flex-wrap: wrap; /* FIXED: Forces items to stay in one line so they can hide/scroll sideways */
+}
+
+/* Hides scrollbar in Chrome/Safari */
+.category-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Category Item */
+.category-item {
+  /* display: flex;              FIXED: Enables flex alignment for children 
+  flex-direction: row;       FIXED: Places icon right next to text horizontally */
+  align-items: center; /* FIXED: Centers icon and text cleanly */
+  gap: 8px;
+  color: var(--ab-gray);
+  cursor: pointer;
+  min-width: fit-content;
+  flex-shrink: 0; /* FIXED: Prevents layout from compressing when screen shrinks */
+  padding-bottom: 10px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  text-decoration: none !important; /* Removes standard anchor line underline */
+}
+
+.category-item i {
+  font-size: 18px;
+}
+
+.category-item span {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* State Changes */
+.category-item:hover {
+  color: var(--ab-black);
+  border-bottom-color: var(--ab-border);
+}
+
+.category-item.active {
+  color: var(--ab-black);
+  border-bottom-color: var(--ab-black);
+}
+
+/* Scroll Arrow Controls */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--ab-border);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  flex-shrink: 0; /* Prevents buttons from losing their circular shape */
+}
+
+.nav-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.left-btn {
+  margin-right: 12px;
+}
+
+.right-btn {
+  margin-left: 12px;
+}
+
+/* search bar styling */
+/* Guarantees the button border has absolute sizing bounds and never clips */
+.search-btn {
+  border: 2px solid #ff385c !important; /* Change color to your theme red */
+  border-radius: 24px;
+  padding: 8px 20px;
+  background-color: #ff385c;
+  color: white;
+  font-weight: 600;
+  display: inline-block;
+  box-sizing: border-box; /* Forces the border to stay INSIDE the element bounds */
+}
+
+/* Make sure the input element box alignment flows smoothly */
+.search-inp {
+  border-radius: 24px !important;
+  padding-left: 16px !important;
+  border: 1px solid #ced4da !important;
+}
+
+/* 🌟 THE OVERLAP TRANSPARENCY SHIELD FIX 🌟 */
+@media (max-width: 767.98px) {
+  /* Forces the mobile dropdown container to have a solid background color when open */
+  .navbar-collapse {
+    background-color: #f7f7f7 !important; /* Matches your new greyish background */
+    padding: 16px !important; /* Adds uniform space around the buttons */
+    border-radius: 0 0 12px 12px; /* Rounds out the bottom corners smoothly */
+    border-bottom: 1px solid #dddddd; /* Adds a crisp border underneath the mobile menu */
+    position: relative;
+    z-index: 9999 !important; /* Places the menu safely over the categories and images */
+  }
+
+  /* Spaces the mobile nav links out so they look neat */
+  .navbar-collapse .navbar-nav {
+    gap: 12px !important;
+  }
+}
+
+
+/* 
+tax-button-styling */
+.tax-toggle {
+    border: 2px solid black;
+    border-radius:0.7rem;
+    height:2.5rem;
+    padding: 1rem;
+    margin-left: 0rem;
+    display:flex;
+    align-items:center;
+    /* background-color:#ffffff */
+
+
+}
+
+.tax-info{
+    display:none;
+}

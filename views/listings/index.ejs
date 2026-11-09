@@ -1,0 +1,116 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+  <!-- Main layout container aligning options inline -->
+  <div class="filter-bar mt-3">
+    
+    <!-- Left Side: Smoothly Scrollable Row of Icon Links -->
+    <div class="category-list">
+      <a href="/listings?category=omg" class="category-item <%= activeCategory === 'omg' ? 'active' : '' %>">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>OMG!</span>
+      </a>
+      
+      <a href="/listings?category=lakefront" class="category-item <%= activeCategory === 'lakefront' ? 'active' : '' %>">
+        <i class="fa-solid fa-water"></i>
+        <span>Lakefront</span>
+      </a>
+      
+      <a href="/listings?category=tinyhomes" class="category-item <%= activeCategory === 'tinyhomes' ? 'active' : '' %>">
+        <i class="fa-solid fa-house-chimney"></i>
+        <span>Tiny homes</span>
+      </a>
+      
+      <a href="/listings?category=trending" class="category-item <%= activeCategory === 'trending' ? 'active' : '' %>">
+        <i class="fa-solid fa-fire"></i>
+        <span>Trending</span>
+      </a>
+      
+      <a href="/listings?category=treehouses" class="category-item <%= activeCategory === 'treehouses' ? 'active' : '' %>">
+        <i class="fa-solid fa-campground"></i>
+        <span>Treehouses</span>
+      </a>
+      
+      <a href="/listings?category=countryside" class="category-item <%= activeCategory === 'countryside' ? 'active' : '' %>">
+        <i class="fa-solid fa-mountain"></i>
+        <span>Countryside</span>
+      </a>
+      
+      <a href="/listings?category=historical" class="category-item <%= activeCategory === 'historical' ? 'active' : '' %>">
+        <i class="fa-solid fa-monument"></i>
+        <span>Historical homes</span>
+      </a>
+      
+      <a href="/listings?category=beachfront" class="category-item <%= activeCategory === 'beachfront' ? 'active' : '' %>">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <span>Beachfront</span>
+      </a>
+      
+      <a href="/listings?category=tropical" class="category-item <%= activeCategory === 'tropical' ? 'active' : '' %>">
+        <i class="fa-solid fa-sun"></i>
+        <span>Tropical</span>
+      </a>
+
+
+       <!-- Right Side: Clean Flex Toggle Container -->
+    <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+        <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+            Display total after taxes
+        </label>
+    </div>
+</div>
+    </div>
+
+   
+
+
+
+
+    <!-- Properties Listings Card Grid Layout -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+      <% for(let list of allLists) { %>
+        <a class="listing-link" href="/listings/<%= list._id %>"> 
+          <div class="listing-card">
+            <div class="image-container">
+              <img class="listing-card-img" src="<%= list.image.url %>" alt="image">
+              <div class="overlay"><span>View Details</span></div>
+            </div>
+            <div class="description">
+              <p class="listing-card-text">
+                <b><%= list.title %></b> 
+                <br>
+                Price: ₹<%= list.price.toLocaleString("en-IN") %> / night
+                <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+              </p>
+            </div>
+          </div>
+        </a>
+      <% } %>
+    </div>
+
+  </div>
+
+
+  <script>
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+    taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info");
+
+        for (info of taxInfo) {
+            if (info.style.display != "inline") {
+                info.style.display = "inline";
+            } else {
+                info.style.display = "none";
+            }
+        }
+    });
+</script>
+</body>
+

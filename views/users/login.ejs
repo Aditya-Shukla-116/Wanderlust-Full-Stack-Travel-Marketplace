@@ -1,0 +1,45 @@
+ <!-- Yes, exactly! By default, Express searches for EJS files inside the views folder when you use res.render(). thats why ../layout is not used -->
+ <% layout("/layouts/boilerplate") -%>
+
+<div class="row mt-5">
+
+    <div class="col-12 col-sm-10 col-md-6 col-lg-5 mx-auto">
+
+        <h1>Login</h1>
+        <form action="/login" method="POST" class="needs-validation" novalidate>
+           <!-- Username -->
+            <div class="form-group mb-3">
+            <label for="username">Username:</label>
+            <input
+             class="form-control"
+             id="username"
+             name="username"
+             placeholder="Enter username"
+             type="text"
+             required
+            />
+        <div class="invalid-feedback">
+         Please enter a valid Username.
+      </div>
+    </div>
+
+     <!-- Password -->
+       <div class="form-group mb-3">
+            <label for="password">Enter Password:</label>
+            <input
+             class="form-control"
+             id="password"
+             name="password"
+             placeholder="Enter your Password"
+             type="password"
+             required
+            />
+        <div class="invalid-feedback">
+         Please enter a valid Password.
+      </div>
+</div>
+ <button class="btn btn-success">Login</button>
+</form>
+
+ </div>
+ </div>
