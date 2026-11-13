@@ -4,7 +4,7 @@ A full-stack accommodation marketplace inspired by platforms like Airbnb. Users 
 
 ## Live Demo
 
-- **Live App:** Coming soon
+- **Live:** https://wanderlust-full-stack-travel-marketplace-dzj0.onrender.com
 - **GitHub Repository:** https://github.com/Aditya-Shukla-116/Wanderlust-Full-Stack-Travel-Marketplace.git
 
 ## Features
@@ -173,4 +173,4 @@ Wanderlust was developed as a full-stack web development project to demonstrate 
 IT Engineering Student | Full-Stack Web Developer
 
 - **GitHub:** https://github.com/Aditya-Shukla-116
-- **LinkedIn:** Coming soon
+- **LinkedIn:** https://linkedin.com/in/aditya-shukla116
